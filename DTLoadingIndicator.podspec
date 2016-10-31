@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DTLoadingIndicator"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Easily show/hide a loading indicator in fullscreen or a specific view."
   s.homepage     = "https://github.com/daront/DTLoadingIndicator"
   s.license      = "MIT"

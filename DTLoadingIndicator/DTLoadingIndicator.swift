@@ -19,7 +19,9 @@ public class DTLoadingIndicator {
     
     static var loadingImageData: NSData {
         let frameworkBundle = NSBundle(forClass: DTLoadingIndicator.self)
-        let resourcePath = frameworkBundle.pathForResource(loadingImageName, ofType: nil)
+        let bundleURL = frameworkBundle.URLForResource("DTLoadingIndicator", withExtension: "bundle")
+        let bundle = NSBundle(URL: bundleURL!)
+        let resourcePath = bundle!.pathForResource(loadingImageName, ofType: nil)
         return NSData(contentsOfFile: resourcePath!)!;
     }
     
