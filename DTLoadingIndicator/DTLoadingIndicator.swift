@@ -18,7 +18,7 @@ class DTLoadingIndicator {
     static var loadingImageName = "love.gif"
     
     
-    static func startFullScreenLoadingIndicator() -> UIActivityIndicatorView {
+    public static func startFullScreenLoadingIndicator() -> UIActivityIndicatorView {
         let window = UIApplication.sharedApplication().delegate!.window!!
         if let indicator = window.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) as? UIActivityIndicatorView {
             // loading indicator is already on screen
@@ -44,7 +44,7 @@ class DTLoadingIndicator {
         
     }
     
-    static func startGiftFullScreenLoadingIndicator() -> FLAnimatedImageView {
+    public static func startGiftFullScreenLoadingIndicator() -> FLAnimatedImageView {
         let window = UIApplication.sharedApplication().delegate!.window!!
         if let indicator = window.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) as? FLAnimatedImageView {
             // loading indicator is already on screen
@@ -84,14 +84,14 @@ class DTLoadingIndicator {
     }
 
     
-    static func stopFullScreenLoadingIndicator() {
+    public static func stopFullScreenLoadingIndicator() {
         let view = UIApplication.sharedApplication().delegate!.window!!
         if let indicator = view.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) {
             indicator.removeFromSuperview()
         }
     }
     
-    static func startLoadingIndicatorInView(view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> UIActivityIndicatorView {
+    public static func startLoadingIndicatorInView(view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> UIActivityIndicatorView {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) as? UIActivityIndicatorView {
             // loading indicator is already in the view
             return indicator
@@ -115,7 +115,7 @@ class DTLoadingIndicator {
     }
 
     
-    static func startGiftLoadingIndicatorInView(view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> FLAnimatedImageView {
+    public static func startGiftLoadingIndicatorInView(view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> FLAnimatedImageView {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) as? FLAnimatedImageView {
             // loading indicator is already in the view
             return indicator
@@ -143,7 +143,7 @@ class DTLoadingIndicator {
         
     }
     
-    static func stopLoadingIndicatorInView(view: UIView) {
+    public static func stopLoadingIndicatorInView(view: UIView) {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) {
             indicator.removeFromSuperview()
         }
