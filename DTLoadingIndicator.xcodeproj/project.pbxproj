@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0E5BD55D93C303975B6D3309 /* Pods_DTLoadingIndicatorDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6323EC52ABD5E9FF1A8A22EA /* Pods_DTLoadingIndicatorDemo.framework */; };
+		1F06D72F1DC722FE00253FD3 /* love.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F06D72E1DC722FE00253FD3 /* love.gif */; };
 		1F50C6031D47544D00C6BBB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C6021D47544D00C6BBB7 /* AppDelegate.swift */; };
 		1F50C6051D47544D00C6BBB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C6041D47544D00C6BBB7 /* ViewController.swift */; };
 		1F50C60A1D47544D00C6BBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F50C6091D47544D00C6BBB7 /* Assets.xcassets */; };
 		1F50C6171D47546700C6BBB7 /* DTLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C6131D47546700C6BBB7 /* DTLoadingIndicator.swift */; };
-		1F50C61A1D47546700C6BBB7 /* love.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F50C6161D47546700C6BBB7 /* love.gif */; };
 		1F50C61C1D47549800C6BBB7 /* FullScreenLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F50C61B1D47549800C6BBB7 /* FullScreenLoadingViewController.swift */; };
 		1F50C61F1D4754B500C6BBB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F50C61D1D4754B500C6BBB7 /* LaunchScreen.storyboard */; };
 		1F50C6201D4754B500C6BBB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F50C61E1D4754B500C6BBB7 /* Main.storyboard */; };
@@ -20,13 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F06D72E1DC722FE00253FD3 /* love.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = love.gif; sourceTree = "<group>"; };
 		1F50C5FF1D47544D00C6BBB7 /* DTLoadingIndicatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTLoadingIndicatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F50C6021D47544D00C6BBB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F50C6041D47544D00C6BBB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F50C6091D47544D00C6BBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F50C60E1D47544D00C6BBB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F50C6131D47546700C6BBB7 /* DTLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTLoadingIndicator.swift; sourceTree = "<group>"; };
-		1F50C6161D47546700C6BBB7 /* love.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = love.gif; sourceTree = "<group>"; };
 		1F50C61B1D47549800C6BBB7 /* FullScreenLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenLoadingViewController.swift; sourceTree = "<group>"; };
 		1F50C61D1D4754B500C6BBB7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F50C61E1D4754B500C6BBB7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -94,8 +94,8 @@
 		1F50C6121D47546700C6BBB7 /* DTLoadingIndicator */ = {
 			isa = PBXGroup;
 			children = (
+				1F06D72E1DC722FE00253FD3 /* love.gif */,
 				1F50C6131D47546700C6BBB7 /* DTLoadingIndicator.swift */,
-				1F50C6161D47546700C6BBB7 /* love.gif */,
 			);
 			path = DTLoadingIndicator;
 			sourceTree = "<group>";
@@ -171,8 +171,8 @@
 			files = (
 				1F50C60A1D47544D00C6BBB7 /* Assets.xcassets in Resources */,
 				1F50C6201D4754B500C6BBB7 /* Main.storyboard in Resources */,
+				1F06D72F1DC722FE00253FD3 /* love.gif in Resources */,
 				1F50C61F1D4754B500C6BBB7 /* LaunchScreen.storyboard in Resources */,
-				1F50C61A1D47546700C6BBB7 /* love.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

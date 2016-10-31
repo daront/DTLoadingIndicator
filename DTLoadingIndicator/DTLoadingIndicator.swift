@@ -17,6 +17,11 @@ public class DTLoadingIndicator {
     static var fullScreenPendingTaskCount = 0
     static var loadingImageName = "love.gif"
     
+    static var loadingImageData: NSData {
+        let frameworkBundle = NSBundle(forClass: DTLoadingIndicator.self)
+        let resourcePath = frameworkBundle.pathForResource(loadingImageName, ofType: nil)
+        return NSData(contentsOfFile: resourcePath!)!;
+    }
     
     public static func startFullScreenLoadingIndicator() -> UIActivityIndicatorView {
         let window = UIApplication.sharedApplication().delegate!.window!!
@@ -64,7 +69,7 @@ public class DTLoadingIndicator {
                 options: [], metrics: nil, views: ["subview":mainView]))
             
             // gif image as loading indicator
-            let image = FLAnimatedImage(animatedGIFData: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(DTLoadingIndicator.loadingImageName, ofType: nil)!))
+            let image = FLAnimatedImage(animatedGIFData: DTLoadingIndicator.loadingImageData)
             let imageView = FLAnimatedImageView()
             imageView.animatedImage = image
             imageView.contentMode = .ScaleAspectFit
@@ -120,7 +125,7 @@ public class DTLoadingIndicator {
             // loading indicator is already in the view
             return indicator
         } else {
-            let image = FLAnimatedImage(animatedGIFData: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource(DTLoadingIndicator.loadingImageName, ofType: nil)!))
+            let image = FLAnimatedImage(animatedGIFData: DTLoadingIndicator.loadingImageData)
             let imageView = FLAnimatedImageView()
             imageView.animatedImage = image
             imageView.contentMode = .ScaleAspectFit
