@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OJn-t7-qxF">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DTLoadingIndicatorDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2B-Fw-jcb">
+                                <rect key="frame" x="233" y="85" width="135" height="30"/>
+                                <state key="normal" title="Full Screen Loading"/>
+                                <connections>
+                                    <segue destination="1IT-mG-3LJ" kind="show" id="BQ1-ap-pcS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B61-cF-FtM">
+                                <rect key="frame" x="246" y="123" width="110" height="30"/>
+                                <state key="normal" title="In-View Loading"/>
+                                <connections>
+                                    <segue destination="Og2-pg-nDu" kind="show" id="HYj-6Z-vNZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P2B-Fw-jcb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="21" id="LJ0-GP-abm"/>
+                            <constraint firstItem="P2B-Fw-jcb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SrK-Pl-7oJ"/>
+                            <constraint firstItem="B61-cF-FtM" firstAttribute="centerX" secondItem="P2B-Fw-jcb" secondAttribute="centerX" id="dN7-tq-CYP"/>
+                            <constraint firstItem="B61-cF-FtM" firstAttribute="top" secondItem="P2B-Fw-jcb" secondAttribute="bottom" constant="8" id="e9r-I0-clB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JE9-aG-Fka"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="423"/>
+        </scene>
+        <!--Full Screen Loading View Controller-->
+        <scene sceneID="QUN-6d-zge">
+            <objects>
+                <viewController id="1IT-mG-3LJ" customClass="FullScreenLoadingViewController" customModule="DTLoadingIndicatorDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mf7-fn-2dW"/>
+                        <viewControllerLayoutGuide type="bottom" id="cbB-Ow-c9K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Eg-gi-0qb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tp-Z5-Yrf">
+                                <rect key="frame" x="263" y="72" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8tp-Z5-Yrf" firstAttribute="centerX" secondItem="8Eg-gi-0qb" secondAttribute="centerX" id="EBi-SH-wK1"/>
+                            <constraint firstItem="8tp-Z5-Yrf" firstAttribute="top" secondItem="mf7-fn-2dW" secondAttribute="bottom" constant="8" id="I9Q-8f-g8y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="8tp-Z5-Yrf" id="wXO-k8-38D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etP-c8-dqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577" y="423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Azh-WB-6Od">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OJn-t7-qxF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ww8-vc-i5G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.97647058819999999" green="0.30588235289999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="47v-MC-vp6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o2z-GB-B8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="367"/>
+        </scene>
+        <!--In View Loading View Controller-->
+        <scene sceneID="uQ4-bj-Bt3">
+            <objects>
+                <viewController id="Og2-pg-nDu" customClass="InViewLoadingViewController" customModule="DTLoadingIndicatorDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H4Q-d2-TxB"/>
+                        <viewControllerLayoutGuide type="bottom" id="XvI-Ps-Xs7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zYw-Cb-ZEl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZm-qw-zxZ">
+                                <rect key="frame" x="180" y="72" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This part of screen is loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnn-3a-28b">
+                                        <rect key="frame" x="8" y="8" width="224" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="rnn-3a-28b" firstAttribute="leading" secondItem="dZm-qw-zxZ" secondAttribute="leading" constant="8" id="1Nf-aS-t1m"/>
+                                    <constraint firstAttribute="trailing" secondItem="rnn-3a-28b" secondAttribute="trailing" constant="8" id="8EL-3q-4Y7"/>
+                                    <constraint firstAttribute="height" constant="128" id="h8g-tk-vCJ"/>
+                                    <constraint firstAttribute="width" constant="240" id="h9Y-0O-ujs"/>
+                                    <constraint firstItem="rnn-3a-28b" firstAttribute="top" secondItem="dZm-qw-zxZ" secondAttribute="top" constant="8" id="v2q-Jf-zzR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="dZm-qw-zxZ" firstAttribute="centerX" secondItem="zYw-Cb-ZEl" secondAttribute="centerX" id="EIh-oT-hmV"/>
+                            <constraint firstItem="dZm-qw-zxZ" firstAttribute="top" secondItem="H4Q-d2-TxB" secondAttribute="bottom" constant="8" id="QdC-la-5gt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="dZm-qw-zxZ" id="86R-js-P78"/>
+                        <outlet property="label" destination="rnn-3a-28b" id="stO-Of-zC4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4v-fJ-QP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577" y="1079"/>
+        </scene>
+    </scenes>
+</document>
