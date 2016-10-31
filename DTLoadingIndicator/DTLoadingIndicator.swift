@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import FLAnimatedImage
 
-class DTLoadingIndicator {
+public class DTLoadingIndicator {
     
     static let IN_VIEW_LOADING_VIEW_TAG = 98
     static let FULL_SCREEN_LOADING_VIEW_TAG = 99
