@@ -18,16 +18,16 @@ class InViewLoadingViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         startLoading()
-        self.performSelector(#selector(FullScreenLoadingViewController.stopLoading), withObject: nil, afterDelay: 3)
+        self.perform(#selector(FullScreenLoadingViewController.stopLoading), with: nil, afterDelay: 3)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
     func startLoading() {
         label.text = "This part of screen is loading"
-        DTLoadingIndicator.startGiftLoadingIndicatorInView(self.contentView, top: 30)
+        let _ = DTLoadingIndicator.startGiftLoadingIndicatorInView(self.contentView, top: 30)
     }
     
     func stopLoading() {

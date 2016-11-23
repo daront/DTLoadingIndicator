@@ -17,8 +17,7 @@ Easily show/hide a loading indicator in fullscreen or a specific view.
 * Show standard loading indicator with **animated gif** in a specific view.
 
 ## System Requirements
-iOS 8.0 or above
-Swift 2.0
+iOS 8.0+, Swift 3.0
 
 ## Installation
 

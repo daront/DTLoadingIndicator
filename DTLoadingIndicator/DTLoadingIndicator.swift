@@ -10,40 +10,46 @@ import Foundation
 import UIKit
 import FLAnimatedImage
 
-public class DTLoadingIndicator {
+open class DTLoadingIndicator {
     
     static let IN_VIEW_LOADING_VIEW_TAG = 98
     static let FULL_SCREEN_LOADING_VIEW_TAG = 99
     static var fullScreenPendingTaskCount = 0
     static var loadingImageName = "love.gif"
     
-    static var loadingImageData: NSData {
-        let frameworkBundle = NSBundle(forClass: DTLoadingIndicator.self)
-        let bundleURL = frameworkBundle.URLForResource("DTLoadingIndicator", withExtension: "bundle")
-        let bundle = NSBundle(URL: bundleURL!)
-        let resourcePath = bundle!.pathForResource(loadingImageName, ofType: nil)
-        return NSData(contentsOfFile: resourcePath!)!;
+    static var loadingImageData: Data {
+        let frameworkBundle = Bundle(for: DTLoadingIndicator.self)
+        if let bundleURL = frameworkBundle.url(forResource: "DTLoadingIndicator", withExtension: "bundle") {
+            // If use cocoapod, resourse files will be in a bundle named "DTLoadingIndicator".
+            let bundle = Bundle(url: bundleURL)
+            let resourcePath = bundle!.path(forResource: loadingImageName, ofType: nil)
+            return (try! Data(contentsOf: URL(fileURLWithPath: resourcePath!)));
+        } else {
+            // If just copy a source file to the project, resource files will be in main bundle. (like the demo project)
+            let resourcePath = Bundle.main.path(forResource: loadingImageName, ofType: nil)
+            return (try! Data(contentsOf: URL(fileURLWithPath: resourcePath!)));
+        }
     }
     
-    public static func startFullScreenLoadingIndicator() -> UIActivityIndicatorView {
-        let window = UIApplication.sharedApplication().delegate!.window!!
+    open static func sttFullScreenLoadingIndicator() -> UIActivityIndicatorView {
+        let window = UIApplication.shared.delegate!.window!!
         if let indicator = window.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) as? UIActivityIndicatorView {
             // loading indicator is already on screen
             return indicator
         } else {
             // loading indicator isn't on screen yet -> create one
-            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
             indicator.tag = FULL_SCREEN_LOADING_VIEW_TAG
             
             // make the area larger
             indicator.translatesAutoresizingMaskIntoConstraints = false
-            indicator.layer.backgroundColor = UIColor.init(white: 0.0, alpha: 0.3).CGColor
+            indicator.layer.backgroundColor = UIColor.init(white: 0.0, alpha: 0.3).cgColor
             indicator.center = window.center
             indicator.hidesWhenStopped = true
             window.addSubview(indicator)
-            window.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subview]|",
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subview]|",
                 options: [], metrics: nil, views: ["subview":indicator]))
-            window.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subview]|",
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|",
                 options: [], metrics: nil, views: ["subview":indicator]))
             indicator.startAnimating()
             return indicator
@@ -51,8 +57,8 @@ public class DTLoadingIndicator {
         
     }
     
-    public static func startGiftFullScreenLoadingIndicator() -> FLAnimatedImageView {
-        let window = UIApplication.sharedApplication().delegate!.window!!
+    open static func startGiftFullScreenLoadingIndicator() -> FLAnimatedImageView {
+        let window = UIApplication.shared.delegate!.window!!
         if let indicator = window.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) as? FLAnimatedImageView {
             // loading indicator is already on screen
             return indicator
@@ -65,24 +71,24 @@ public class DTLoadingIndicator {
             mainView.backgroundColor = UIColor.init(white: 1.0, alpha: 0.9)
             mainView.translatesAutoresizingMaskIntoConstraints = false
             window.addSubview(mainView)
-            window.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subview]|",
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subview]|",
                 options: [], metrics: nil, views: ["subview":mainView]))
-            window.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subview]|",
+            window.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|",
                 options: [], metrics: nil, views: ["subview":mainView]))
             
             // gif image as loading indicator
             let image = FLAnimatedImage(animatedGIFData: DTLoadingIndicator.loadingImageData)
             let imageView = FLAnimatedImageView()
             imageView.animatedImage = image
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             imageView.translatesAutoresizingMaskIntoConstraints = false
             mainView.addSubview(imageView)
-            imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[subview(60)]",
+            imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[subview(60)]",
                 options: [], metrics: nil, views: ["subview":imageView]))
-            imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[subview(60)]",
+            imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[subview(60)]",
                 options: [], metrics: nil, views: ["subview":imageView]))
-            mainView.addConstraint(NSLayoutConstraint(item: mainView, attribute: .CenterX, relatedBy: .Equal, toItem: imageView, attribute: .CenterX, multiplier: 1, constant: 0))
-            mainView.addConstraint(NSLayoutConstraint(item: mainView, attribute: .CenterY, relatedBy: .Equal, toItem: imageView, attribute: .CenterY, multiplier: 1, constant: 0))
+            mainView.addConstraint(NSLayoutConstraint(item: mainView, attribute: .centerX, relatedBy: .equal, toItem: imageView, attribute: .centerX, multiplier: 1, constant: 0))
+            mainView.addConstraint(NSLayoutConstraint(item: mainView, attribute: .centerY, relatedBy: .equal, toItem: imageView, attribute: .centerY, multiplier: 1, constant: 0))
             
             
             return imageView
@@ -91,30 +97,30 @@ public class DTLoadingIndicator {
     }
 
     
-    public static func stopFullScreenLoadingIndicator() {
-        let view = UIApplication.sharedApplication().delegate!.window!!
+    open static func stopFullScreenLoadingIndicator() {
+        let view = UIApplication.shared.delegate!.window!!
         if let indicator = view.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) {
             indicator.removeFromSuperview()
         }
     }
     
-    public static func startLoadingIndicatorInView(view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> UIActivityIndicatorView {
+    open static func startLoadingIndicatorInView(_ view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> UIActivityIndicatorView {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) as? UIActivityIndicatorView {
             // loading indicator is already in the view
             return indicator
         } else {
-            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+            let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             indicator.hidesWhenStopped = true
             indicator.tag = IN_VIEW_LOADING_VIEW_TAG
             indicator.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(indicator)
             if verticalCenter {
-                view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: indicator, attribute: .CenterY, multiplier: 1, constant: 0))
+                view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: indicator, attribute: .centerY, multiplier: 1, constant: 0))
             } else {
-                view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: indicator, attribute: .Top, multiplier: 1, constant: -top))
+                view.addConstraint(NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: indicator, attribute: .top, multiplier: 1, constant: -top))
             }
             
-            view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: indicator, attribute: .CenterX, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: indicator, attribute: .centerX, multiplier: 1, constant: 0))
             indicator.startAnimating()
             return indicator
         }
@@ -122,7 +128,7 @@ public class DTLoadingIndicator {
     }
 
     
-    public static func startGiftLoadingIndicatorInView(view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> FLAnimatedImageView {
+    open static func startGiftLoadingIndicatorInView(_ view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> FLAnimatedImageView {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) as? FLAnimatedImageView {
             // loading indicator is already in the view
             return indicator
@@ -130,27 +136,27 @@ public class DTLoadingIndicator {
             let image = FLAnimatedImage(animatedGIFData: DTLoadingIndicator.loadingImageData)
             let imageView = FLAnimatedImageView()
             imageView.animatedImage = image
-            imageView.contentMode = .ScaleAspectFit
+            imageView.contentMode = .scaleAspectFit
             imageView.tag = IN_VIEW_LOADING_VIEW_TAG
             imageView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(imageView)
             if verticalCenter {
-                view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: imageView, attribute: .CenterY, multiplier: 1, constant: 0))
+                view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: imageView, attribute: .centerY, multiplier: 1, constant: 0))
                 
             } else {
-                view.addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: imageView, attribute: .Top, multiplier: 1, constant: -top))
+                view.addConstraint(NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .top, multiplier: 1, constant: -top))
             }
 
-            imageView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[subview(40)]",
+            imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[subview(40)]",
                 options: [], metrics: nil, views: ["subview":imageView]))
-            view.addConstraint(NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: imageView, attribute: .CenterX, multiplier: 1, constant: 0))
+            view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: imageView, attribute: .centerX, multiplier: 1, constant: 0))
 
             return imageView
         }
         
     }
     
-    public static func stopLoadingIndicatorInView(view: UIView) {
+    open static func stopLoadingIndicatorInView(_ view: UIView) {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) {
             indicator.removeFromSuperview()
         }

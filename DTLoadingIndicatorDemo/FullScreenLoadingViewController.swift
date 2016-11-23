@@ -17,16 +17,16 @@ class FullScreenLoadingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         startLoading()
-        self.performSelector(#selector(FullScreenLoadingViewController.stopLoading), withObject: nil, afterDelay: 3)
+        self.perform(#selector(FullScreenLoadingViewController.stopLoading), with: nil, afterDelay: 3)
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
 
     func startLoading() {
         self.label.text = "Loading..."
-        DTLoadingIndicator.startGiftFullScreenLoadingIndicator()
+        let _ = DTLoadingIndicator.startGiftFullScreenLoadingIndicator()
     }
     
     func stopLoading() {
