@@ -27,7 +27,7 @@ class InViewLoadingViewController: UIViewController {
     
     func startLoading() {
         label.text = "This part of screen is loading"
-        let _ = DTLoadingIndicator.startGiftLoadingIndicatorInView(self.contentView, top: 30)
+        DTLoadingIndicator.startGiftLoadingIndicatorInView(self.contentView, top: 30)
     }
     
     func stopLoading() {

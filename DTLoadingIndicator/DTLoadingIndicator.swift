@@ -31,7 +31,8 @@ open class DTLoadingIndicator {
         }
     }
     
-    open static func sttFullScreenLoadingIndicator() -> UIActivityIndicatorView {
+    @discardableResult
+    open static func startFullScreenLoadingIndicator() -> UIActivityIndicatorView {
         let window = UIApplication.shared.delegate!.window!!
         if let indicator = window.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) as? UIActivityIndicatorView {
             // loading indicator is already on screen
@@ -57,6 +58,7 @@ open class DTLoadingIndicator {
         
     }
     
+    @discardableResult
     open static func startGiftFullScreenLoadingIndicator() -> FLAnimatedImageView {
         let window = UIApplication.shared.delegate!.window!!
         if let indicator = window.viewWithTag(FULL_SCREEN_LOADING_VIEW_TAG) as? FLAnimatedImageView {
@@ -104,6 +106,7 @@ open class DTLoadingIndicator {
         }
     }
     
+    @discardableResult
     open static func startLoadingIndicatorInView(_ view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> UIActivityIndicatorView {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) as? UIActivityIndicatorView {
             // loading indicator is already in the view
@@ -127,7 +130,7 @@ open class DTLoadingIndicator {
         
     }
 
-    
+    @discardableResult
     open static func startGiftLoadingIndicatorInView(_ view:UIView, verticalCenter:Bool = false, top:CGFloat = 0) -> FLAnimatedImageView {
         if let indicator = view.viewWithTag(IN_VIEW_LOADING_VIEW_TAG) as? FLAnimatedImageView {
             // loading indicator is already in the view
@@ -149,6 +152,8 @@ open class DTLoadingIndicator {
 
             imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[subview(40)]",
                 options: [], metrics: nil, views: ["subview":imageView]))
+            imageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[subview(40)]",
+                                                                    options: [], metrics: nil, views: ["subview":imageView]))
             view.addConstraint(NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: imageView, attribute: .centerX, multiplier: 1, constant: 0))
 
             return imageView
